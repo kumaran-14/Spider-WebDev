@@ -1,0 +1,38 @@
+extends ../layout.pug
+
+mixin displayError
+  .error-header
+    img.header-image(src='https://static.tutsplus.com/assets/sad-computer-128aac0432b34e270a8d528fb9e3970b.gif', alt='Sad computer')
+    h3.header-title OH NO, SOMETHING WENT WRONG
+  .error-body
+    h4 Please try the following
+    ul
+      li
+        | &Rarrtl;&nbsp; Make sure your
+        strong &nbsp;username&nbsp;
+        | is valid
+      li
+        | &Rarrtl;&nbsp; Make sure your
+        strong &nbsp;password&nbsp;
+        | is correct
+    a(href='/user/login')
+      button.press(type='button') Try Again
+    h5 New User?
+    a(href='/user/register')
+      button.press(type='button') Register
+
+block append head
+  link(rel='stylesheet',href='/css/login.css')
+block content
+  .login
+    if(errors)
+      +displayError
+    else
+      h2 Login
+      form(method='POST',action='/user/login')
+        .form-group
+          input(type='text',name='username',placeholder='Username')
+        .form-group
+          input(type='password',name='password',placeholder='Password')
+        .form-group
+          button(type='submit',) Login

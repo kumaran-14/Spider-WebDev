@@ -1,0 +1,51 @@
+extends ../layout.pug
+
+mixin displayError
+  .error-header
+    img.header-image(src='https://static.tutsplus.com/assets/sad-computer-128aac0432b34e270a8d528fb9e3970b.gif', alt='Sad computer')
+    h3.header-title OH NO, SOMETHING WENT WRONG
+  .error-body
+    h4 Please try the following
+    ul
+      li
+        | &Rarrtl;&nbsp; Make sure your
+        strong &nbsp;name&nbsp;
+        | is not empty
+      li
+        | &Rarrtl;&nbsp; Make sure your
+        strong &nbsp;username&nbsp;
+        | is unique
+      li
+        | &Rarrtl;&nbsp; Make sure your
+        strong &nbsp;email&nbsp;
+        | is valid
+      li
+        | &Rarrtl;&nbsp; Make sure your
+        strong &nbsp;passwords&nbsp;
+        | match
+    a(href='/user/register')
+      button.press(type='button') Try Again
+block append head
+  link(rel='stylesheet',href='/css/register.css')
+block content
+  .register
+    if(errors)
+      +displayError
+    else
+      h2 Registration
+      form#registerForm(method='POST',action='/user/register')
+        .form-group
+          input#fullname(type='text',name='fullname',placeholder='Name')
+        .form-group
+          input#username(type='text',name='username',placeholder='Username',autocomplete='false',onkeyup = 'validateUsername()')
+          .result
+        .form-group
+          input#email(type='text',name='email',placeholder='Email')
+        .form-group
+          input#password(type='password',name='password',placeholder='Password')
+        .form-group
+          input#passwordConf(type='password',name='passwordConf',placeholder='Confirm Password')
+        .form-group
+          button(type='submit') Register
+block script
+  script(src="/js/submit.js")

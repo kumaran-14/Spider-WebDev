@@ -1,0 +1,23 @@
+extends layout
+block content
+  .row
+    .col-sm-8
+      form(method="POST",action="/notes/edit/" + note._id,enctype="multipart/form-data")
+        .form-group
+          label Title:
+          input.form-control(type="text",name="title",value=note.title)
+        .form-group
+          label Content:
+          textarea.form-control(name="content",rows='6')=note.content
+        .form-group
+          label File / Photo:
+          .custom-file
+            input#customFile.custom-file-input.form-control-file(type='file',name='photo')
+            label.custom-file-label(for='customFile') Choose file
+        .form-group
+          label Caption:  
+          input.form-control(type="text",name="caption",value=note.caption)
+        .form-group
+          label Tags:
+          input.form-control(type='text',name='tags',value=note.tags.join(" "))
+        input.btn.btn-primary(type="submit" ,value="SUBMIT")

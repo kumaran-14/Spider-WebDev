@@ -1,0 +1,32 @@
+extends ./layout.pug
+
+block append head
+	link(rel='stylesheet',href='/css/searchResults.css')
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+block content
+	div.search-div(data-username = user.username)
+		h3 Search
+		div.input-div
+			form#search-form
+				div.text-input
+					input#search-query(type = 'text',name='searchquery',placeholder='Search by Book Title, Author, Publisher, ISBN, or Subject',value=defaultSearchString)
+					button.press(type = submit) Search
+				div.search-parameters(style='font-size:13px;')
+					input(type='radio', name='parameters', value='all', checked='checked')
+					label &nbsp;All&emsp;
+					input(type='radio', name='parameters', value='intitle')
+					label &nbsp;Title&emsp;
+					input(type='radio', name='parameters', value='inauthor')
+					label &nbsp;Author&emsp;
+					input(type='radio', name='parameters', value='inpublisher')
+					label &nbsp;Publisher&emsp;
+					input(type='radio', name='parameters', value='isbn')
+					label &nbsp;ISBN&emsp;
+					input(type='radio', name='parameters', value='subject')
+					label &nbsp;Subject&emsp;
+		h4 Search Results.
+		hr
+
+block script
+	script(src='/js/search.js')

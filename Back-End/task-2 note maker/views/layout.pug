@@ -1,0 +1,48 @@
+doctype html
+html
+  head
+    block head
+      title NimbleNotes
+      meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
+      link(rel='stylesheet',href='/css/bootstrap.css')
+      link(rel='stylesheet',href='/css/layout.css')
+  body
+    header    
+    nav.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
+      a.navbar-brand(href='#') NimbleNotes
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarCollapse', aria-controls='navbarCollapse', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarCollapse.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item
+            a.nav-link(href='/')
+              | Home 
+              span.sr-only (current)
+          if user
+          li.nav-item
+            a.nav-link(href='/notes') Notes
+          li.nav-item
+            a.nav-link(href='/lists') To-do Lists
+        ul.navbar-nav.nav.navbar-right
+          if user
+            li
+              a.nav-link(href='/users/logout') Logout					
+          else
+            li
+              a.nav-link(href="/users/register") Register
+            li
+              a.nav-link(href="/users/login") Login		    
+    .container
+      h2#main-header #{header}
+      != messages('message_template', locals)
+      if errors
+        each error,i in errors
+          div(class="text-center alert alert-danger") #{error.msg}
+      block content
+    br
+    br
+    script(src="/js/jquery.js")
+    script(src="/js/delete.js")
+    
+    
+    

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Pocket Tanks</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <canvas id="canvas" width="750" height="450"></canvas>
+<div id="container">
+	<div class="control" id="weapon">
+		<select id="weapon-selector" onchange="changeWeapon()">  <!--Call changePower() function-->    
+			<option value="0">WEAPON</option> 
+     			<option value="heaver" selected ="selected">HEAVER</option>
+     			<option value="hurler">HURLER</option>
+    			<option value="pitcher">PITCHER</option>
+     </select>
+	</div>
+	<div class="control" id="fire">
+		<span id="fire-weapon">
+			<h1 class="fire-weapon">FIRE</h1>
+		</span>
+	</div>
+	<div class="control" id="angle">
+		<div class="slidecontainer">
+			<input type="range" min="0" max="90" value="90" class="slider" id="myRange">
+			<p>Angle:<span id="demo"></span></p>
+		</div>
+	</div>
+	<div class="control" id="power">
+		<select id="power-selector" onchange="changePower()">  <!--Call changePower() function-->    <option value="0">POWER</option> 
+     <option value="weak" selected ="selected">WEAK</option>
+     <option value="normal">NORMAL</option>
+     <option value="strong">STRONG</option>
+     </select>
+	</div>
+</div>
+<div id="game-control">
+	<div id="control-items">
+		<i class="fas fa-redo"></i>
+		<i class="far fa-pause-circle"></i>
+	</div>
+</div>
+<img id="image" src="https://u.imageresize.org/88d86fa2-c829-4360-9d99-63a6154b8111.png" border="0" />
+<img id="mirror-image" src="https://u.imageresize.org/502b2902-d401-485e-bf49-bc62b025a699.png" border="0" />
+  
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>

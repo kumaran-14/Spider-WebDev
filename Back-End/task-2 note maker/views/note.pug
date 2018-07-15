@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  .card
+    .card-header
+      h3 #{note.title}
+    .card-body
+      h5.card-title Content
+      p.card-text #{note.content}
+      if note.caption != 'none'
+        p.card-text #{note.caption}
+      if note.path != 'none'
+        - var path = `/${note.path}`
+        img(src=path, alt='image')
+      p.card-text Tags: 
+        each tag,i in note.tags
+          i #{tag} 
+      p.card-text
+        - var ctmsg = `${note.createdAt}`
+        - var utmsg = `${note.updatedAt}`
+        br
+        span Created At: 
+        i
+          strong #{ctmsg.slice(4,24)}
+        br
+        span Updated At: 
+        i
+          strong #{utmsg.slice(4,24)}    
+      if user
+        a.btn.btn-primary(href='/notes/edit/' + note._id) Edit
+        a.btn.btn-danger#delete-note(href='#',data-id=note._id) Delete

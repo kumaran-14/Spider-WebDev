@@ -1,0 +1,69 @@
+extends ./layout.pug
+
+mixin addEachResultDiv(book)
+	div.each-result(data-id = book.volume_id)
+		div.result-image
+			-var url = 'https://www.maxpixel.net/static/photo/1x/Embossing-Empty-Book-Cover-Leather-Book-3088775.jpg'
+			if (book.detail_obj.volumeInfo.imageLinks)
+				- url = `${book.detail_obj.volumeInfo.imageLinks.smallThumbnail}`
+			img(src=url)
+		div.result-content
+			p.book-name
+				strong
+					a(href=`${book.detail_obj.volumeInfo.previewLink}`) #{book.detail_obj.volumeInfo.title}
+			p.author-name(style='font-size:13px;')
+				span(style='font-size:11px;') by
+				| &nbsp; #{book.detail_obj.volumeInfo.authors}
+			p.detail(style='font-size:12px;border-bottom:16px')
+				- paratext = (book.detail_obj.volumeInfo.publisher ? book.detail_obj.volumeInfo.publisher : 'Anonymous') + ", " + (book.detail_obj.volumeInfo.publishedDate ? book.detail_obj.volumeInfo.publishedDate : 'Anonymous') + ""
+				| &ndash; #{paratext}
+
+
+block append head
+	link(rel='stylesheet',href='/css/searchResults.css')
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+block content
+	div.profile-div
+		h4 Your Book Shelf.
+		hr
+		div.all-results
+			if(shelfBooks.length != 0)
+				each book, index in shelfBooks
+					+addEachResultDiv(book)
+			else
+				p
+				|	No books found in your shelf. Go on and search for awesome books
+	div.profile-div
+		h4 Your Favourites.
+		hr
+		div.all-results
+			if(favBooks.length != 0)
+				each book, index in favBooks
+					+addEachResultDiv(book)
+			else
+				p No books added to favourites. Go on and search for awesome books
+	div.profile-div
+		h4 Your are currently reading.
+		hr
+		div.all-results
+			if(booksWithStatus.length != 0)
+				each book, index in booksWithStatus
+					if(book.status == 2)
+						+addEachResultDiv(book)
+			else
+				p
+				|	No books marked as currently reading. Go on and search for awesome books
+	div.profile-div
+		h4 Activities
+		hr
+		div.all-results
+			if (activities.length != 0)
+				each book, index in activities
+					i
+						strong #{book.activity}
+					+addEachResultDiv(book)
+			else
+				p
+				|	No activities Yet. Go on and search for awesome books
+

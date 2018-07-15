@@ -1,0 +1,42 @@
+doctype html
+html
+  head
+    block head
+      title Bookaholic
+      meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
+      link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous")
+      link(href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet")
+      link(rel='stylesheet',href='/css/layout.css')
+  body
+    ul.fixed-nav
+      - var username = 'default'
+      if (user)
+        - var username = user.username
+      li
+        a(href = '/home/'+ username +'/') Home
+      li
+        a(href= '/bookshelf/'+ username +'/') Book Shelf
+      li
+        a(href='/profile/'+ username +'/') Profile
+      li
+        a(href='/search/'+ username +'/') Search
+      if (!user)
+        li(style='margin-left:auto;')
+          a(href='/user/login') Login
+        li
+          a(href='/user/register') Register
+      else
+        li
+          form(method='POST',action='/search/' + user.username)
+            input(type = 'text',name='searchquery',placeholder='Search books')
+        li(style='margin-left:auto;')
+          a(href='/user/logout') Logout
+    main
+      block content
+    footer
+      span Terms | Privacy | Feedback: kumarangowrisankar@yahoo.in
+      span &copy; Bookaholic 2018 - 2019
+    block script
+
+
+

@@ -1,0 +1,23 @@
+extends layout
+block content
+  .row
+    .col-sm-8
+      form(method="POST",action="/notes/add",enctype="multipart/form-data")
+        .form-group
+          label Title:
+          input.form-control(type="text",name="title")
+        .form-group
+          label Content:
+          textarea.form-control(name="content",rows='6')
+        .form-group
+          label File / Photo:
+          .custom-file
+            input#customFile.custom-file-input.form-control-file(type='file',name='photo')
+            label.custom-file-label(for='customFile') Choose file
+        .form-group
+          label Caption:  
+          input.form-control(type="text",name="caption")
+        .form-group
+          label Tags:
+          input.form-control(type='text',name='tags',placeholder='Tags should be space-seperated. Eg:"personal important casual"')
+        input.btn.btn-primary(type="submit" ,value="SUBMIT")

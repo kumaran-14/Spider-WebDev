@@ -1,0 +1,124 @@
+*{
+  margin:0;
+  padding:0;
+  boz-sizing:border-box;
+}
+body{
+  display:flex;
+  justify-content:center;
+  min-height:100vh;
+  align-items:center;
+  background-color:#dddfe6;
+}
+.container{
+  width:950px;
+  margin:50px;
+  border-radius: 7px; 
+  border:3px solid rgba(41,171,164,1);
+  box-shadow:5px 30px 30px 10px #b6b6b6;
+  }
+.page-head {
+  background-color: #4A4A4A;
+  color: white;
+  padding:25px;
+  border:2px solid rgba(41,171,164,1);
+  font-family: 'EB Garamond', serif;
+  font-size:24px;
+}
+
+.page-head h1,.intro > p {
+    text-align: center;
+}
+
+
+.intro {
+    padding:30px;
+    font-size:26px;
+    color: rgba(41,171,164,1);
+    background: #dddfe6;
+   border:2px solid rgba(41,171,164,1);
+   font-family: 'Satisfy', cursive;
+  font-weight:bold;
+}
+
+
+.test-area p{
+    margin: 0 auto;
+    padding:20px;
+  font-size:23px;
+   line-height:1.5em;
+  font-family: 'Overlock', cursive;
+}
+
+.test-area {
+  padding: 15px;
+  border:2px solid rgba(41,171,164,1);
+  border-radius:5px;
+}
+#test-area{
+  padding:15px;
+  font-size:21px;
+  font-family: 'Overlock', cursive;
+  border:2px solid rgba(41,171,164,1);
+  border-radius: 3px;
+}
+
+
+#origin-text {
+    margin: 1em 0;
+    padding: 1em 1em 0;
+    background-color: #ededed;
+}
+
+#origin-text p {
+    margin: 0;
+    padding-bottom: 1em;
+    user-select:none !important;
+}
+
+.test-wrapper {
+    display: flex;
+  justify-content:center;
+}
+
+.test-wrapper textarea {
+   
+   background-color: #ededed;
+  width:90%;
+}
+
+.clock-timer {
+text-align:center;
+ font-family: 'Overlock', cursive;
+}
+
+.timer {
+    font-size: 50px;
+    font-weight: bold;
+  font-family: 'Overlock', cursive;
+  margin:15px;
+}
+
+#reset {
+    padding:20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #7A57D1;
+    border: 3px solid #7A57D1;
+    margin:10px;
+}
+
+#reset:hover {
+    color: white;
+    background-color: #3DC7BE;
+  cursor:pointer;
+  border: 3px solid #3DC7BE;
+}
+.highlight-green{
+ background-color:#6abe83; 
+  color:white;
+}
+.highlight-red{
+ background-color:#f06966; 
+  color:white;
+}

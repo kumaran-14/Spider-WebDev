@@ -1,0 +1,39 @@
+extends layout
+block append head
+  link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.0.13/css/all.css', integrity='sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp', crossorigin='anonymous')
+block content
+  .row
+    .col-sm-8
+      form#new-list-item(method='POST' ,action='/todos/'+ listId +'/add')
+        .form-group
+          label Add TO-DOs
+          input.form-control(type='text',name='todo')
+        input.btn.btn-info(type='submit',value='Submit')
+      br
+      h5
+        i UnFinished Tasks :
+      ul.list-group.myList(data-list-id = listId)
+        each todo,i in notdonetodos
+          li.list-group-item#flex(data-id = todo._id)
+            span
+              form(method='POST' ,action='/todos/'+ listId +'/check/'+todo._id)
+                input.btn.btn-primary.btn-sm(type = 'submit',value='Check')
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #{todo.content}
+            if user
+              span.margin-left
+                  i.far.fa-trash-alt(data-id=todo._id)
+      br
+      h5
+        i Finished Tasks :
+      ul.list-group.myList(data-list-id = listId)
+        each todo,i in donetodos
+          li.list-group-item#flex
+            span
+              form(method='POST',action='/todos/'+ listId +'/check/'+todo._id)
+                input.btn.btn-danger.btn-sm(type = 'submit',value='UnCheck')
+            span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              del #{todo.content}
+            if user
+              span.margin-left
+                i.far.fa-trash-alt(data-id=todo._id)
+        

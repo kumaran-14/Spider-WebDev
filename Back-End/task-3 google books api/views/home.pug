@@ -1,0 +1,29 @@
+extends ./layout.pug
+
+block append head
+	link(rel='stylesheet',href='/css/searchResults.css')
+
+block content
+	div.search-div
+		h4 Some Suggestions.
+		hr
+		div.all-results
+			if(books)
+				if(books.items.length !== 0)
+					each book, index in books.items
+						div.each-result(data-id = book.id)
+							div.result-image
+								-var url = 'https://www.maxpixel.net/static/photo/1x/Embossing-Empty-Book-Cover-Leather-Book-3088775.jpg'
+								if(book.volumeInfo.imageLinks)
+									- url = `${book.volumeInfo.imageLinks.smallThumbnail}`
+								img(src=url)
+							div.result-content
+								p.book-name
+									strong
+										a(href=`book.volumeInfo.previewLink`) #{book.volumeInfo.title}
+								p.author-name(style='font-size:13px;')
+									span(style='font-size:11px;') by
+									| &nbsp; #{books.items[index].volumeInfo.authors}
+								p.detail(style='font-size:12px;border-bottom:16px')
+									- paratext = (book.volumeInfo.publisher ? book.volumeInfo.publisher : 'Anonymous') + ", " + (book.volumeInfo.publishedDate ? book.volumeInfo.publishedDate : 'Anonymous') + ""
+								| &ndash; #{paratext}

@@ -1,0 +1,33 @@
+extends ./layout.pug
+
+block append head
+	link(rel='stylesheet',href='/css/searchResults.css')
+
+block content
+	div.search-div
+		h3 Search
+		div.input-div
+			form(method='POST',action='/search/' + user.username)
+				-let inputVal =''
+				if ( setInputValue)
+					- inputVal = setInputValue
+				input(type = 'text',name='searchquery',placeholder='Search books',value = inputVal)
+				button.press(type = submit) Search
+		h4 Search Results.
+		hr
+		div.all-results
+			if(data.items.length !== 0)
+				each book, index in data.items
+					div.each-result
+						div.result-image
+							-var url = 'https://www.maxpixel.net/static/photo/1x/Embossing-Empty-Book-Cover-Leather-Book-3088775.jpg'
+							if(data.items[index].volumeInfo.imageLinks)
+								- url = `${data.items[index].volumeInfo.imageLinks.smallThumbnail}`
+							img(src=url)
+						div.result-content
+							p.book-name #{data.items[index].volumeInfo.title}
+							p.author-name #{data.items[index].volumeInfo.authors}
+							p.detail &ndash; #{data.items[index].volumeInfo.publisher}, #{data.items[index].volumeInfo.publishedDate}
+			else
+				div.each-result
+					ul Looking for a book?

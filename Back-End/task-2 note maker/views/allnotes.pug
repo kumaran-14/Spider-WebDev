@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  ul.list-group
+    each note, i in notes
+      if user
+        if user._id == note.userid
+          li.list-group-item
+            a(href='/notes/' + note._id)= note.title  
+  br
+  if user
+    a.btn.btn-dark(href="/notes/labelview") LabelView
+    br
+    a.btn.btn-info(href='/notes/create') Create
+  else 
+    p
+      i
+        strong Please login to see your notes.

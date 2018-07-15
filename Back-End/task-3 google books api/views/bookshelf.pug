@@ -1,0 +1,45 @@
+extends ./layout.pug
+
+block append head
+	link(rel='stylesheet',href='/css/searchResults.css')
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+block content
+	div.search-div
+		h4 Your Books.
+		hr
+		div.all-results
+			if(books.length !== 0)
+				each book, index in books
+					div.each-result(data-id = book.volume_id)
+						div.result-image
+							-var url = 'https://www.maxpixel.net/static/photo/1x/Embossing-Empty-Book-Cover-Leather-Book-3088775.jpg'
+							if(book.detail_obj.volumeInfo.imageLinks)
+								- url = `${book.detail_obj.volumeInfo.imageLinks.smallThumbnail}`
+							img(src=url)
+						div.result-content
+							p.book-name
+								strong
+									a(href=`${book.detail_obj.volumeInfo.previewLink}`) #{book.detail_obj.volumeInfo.title}
+							p.author-name(style='font-size:13px;')
+								span(style='font-size:11px;') by
+								| &nbsp; #{book.detail_obj.volumeInfo.authors}
+							p.detail(style='font-size:12px;border-bottom:16px')
+								- paratext = (book.detail_obj.volumeInfo.publisher ? book.detail_obj.volumeInfo.publisher : 'Anonymous') + ", " + (book.detail_obj.volumeInfo.publishedDate ? book.detail_obj.volumeInfo.publishedDate : 'Anonymous') + ""
+								| &ndash; #{paratext}
+							i.fas.fa-heart.press(data-favourite = String(book.favourite))
+						.status-rate
+							.select
+								select#status(name='status',data-status=book.status)
+									option(value="0") Set Book Status
+									option(value='1') Want to Read
+									option(value='2') Currently Reading
+									option(value='3') Finished Reading
+							.rating(data-rating=book.rating)
+								label.star.unchecked(data-id='0')
+								label.star.unchecked(data-id='1')
+								label.star.unchecked(data-id='2')
+								label.star.unchecked(data-id='3')
+								label.star.unchecked(data-id='4')
+block script
+	script(src='/js/bookshelf.js')

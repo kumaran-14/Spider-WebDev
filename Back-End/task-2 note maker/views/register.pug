@@ -1,0 +1,26 @@
+extends layout.pug
+
+block append head
+  link(rel='stylesheet',href='/css/register.css')
+block content
+  form.form-signin(method='POST',action='/users/register')
+    h1.h3.mb-3.font-weight-normal Register for NimbleNotes
+    label.sr-only(for='inputEmail') Name
+    input#inputName.form-control(type='text', placeholder='Name', required='', autofocus='',name='name')
+    
+    label.sr-only(for='inputEmail') Username
+    input#inputUsername.form-control(type='text', placeholder='Username', required='', autofocus='',name='username')
+    
+    label.sr-only(for='inputEmail') Email
+    input#inputEmail.form-control(type='email', placeholder='Email address', required='', autofocus='',name='email')
+    
+    label.sr-only(for='inputPassword') Password
+    input#inputPassword.form-control(type='password', placeholder='Password', required='',name='password')
+    
+    label.sr-only(for='inputPassword2')  Confirm Password
+    input#inputPassword2.form-control(type='password', placeholder='Confirm Password', required='',name='password2')
+    
+    input.btn.btn-lg.btn-primary.btn-block(type='submit',value='REGISTER')
+
+        
+  

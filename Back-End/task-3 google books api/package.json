@@ -1,0 +1,26 @@
+{
+  "name": "Spider Book App",
+  "version": "1.0.0",
+  "description": "Used Google Books API. Started from a custom made node scaffold",
+  "main": "server.js",
+  "author": "Kumaran G",
+  "license": "ISC",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "connect-flash": "*",
+    "cookie-parser": "*",
+    "express": "*",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "*",
+    "mongoose": "*",
+    "passport": "*",
+    "path": "*",
+    "pug": "*",
+    "request": "*"
+  }
+}
