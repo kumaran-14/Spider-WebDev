@@ -35,7 +35,7 @@ exports.addUser = (req, res) => {
     let newUser = new User({
       name: name,
       email: email,
-      username: username,
+      userid: username,
       password: password
     })
     bcrypt.genSalt(10, (err, salt) => {

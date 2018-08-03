@@ -26,7 +26,7 @@ exports.create = (req, res) => {
     listId: req.params.listId,
     done: false
   })
-  newTodo.save(err = > {
+  newTodo.save(err => {
     if (err) console.log(err);
     Todo.find({}, (err, todos) => {
       req.flash('success', 'Task Added')

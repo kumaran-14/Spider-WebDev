@@ -7,7 +7,7 @@ module.exports = function(passport){
 
   passport.use( new LocalStrategy((username,password,done) => {
 
-    let query = {username:username}
+    let query = {userid:username}
     User.findOne(query,(err,user) => {
       if (err) {
         console.log(err);

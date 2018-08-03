@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+*{
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+}
+
+body{
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items:center;
+	padding:30px;
+	font-family:'Open sans';
+	min-height: 550px;
+}
+
+.title{
+	margin: 20px;
+}
+.text{
+margin: 10px;
+}
+
+.container{
+	min-height:200px;
+	width:600px;
+	border:2px solid black;
+	display:flex;
+	align-items:center;
+}
+
+.magnet{
+	background:red;
+	width:150px;
+	border:3px solid #2c2525;
+	border-radius:4px;
+	transition: all linear 0.5s
+}
+
+.south,.north{
+	color:white;
+	width:50%;
+	padding:6px;
+
+}
+
+.south{
+	text-align:right;
+	background:#D50000
+}
+
+.north{
+	background:#1976D2
+}
+
+/* some attention to detail */
+.magnet div{
+	user-select: none;
+	display:flex;
+}
+
+.magnet-1{
+	margin-left:25%
+}
+
+/*  rotate on click*/
+@keyframes rotate-center{
+	0%{
+		transform:rotate(0)
+	}
+	100%{
+		transform:rotate(180deg)
+	}
+}
+
+.rotate-on{
+	transform:rotateZ(180deg);
+}
+
+.move-right{
+	margin-left:20%;
+}
+
+.move-left{
+	margin-left:15%;
+}

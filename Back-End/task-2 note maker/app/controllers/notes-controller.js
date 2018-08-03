@@ -129,6 +129,7 @@ exports.findOne = (req, res) => {
       });
     });
 }
+
 //view for editing
 exports.edit = (req, res) => {
   Note.findById(req.params.noteId, (err, note) => {
