@@ -1,0 +1,15 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title Paint With Voice
+    style canvas{ border:2px solid black;}
+  body
+    div
+      p.output(style="text-align:center;") Spoken Command :&nbsp;
+        em.command
+    button#listen(type='button')  Start Listening
+    br
+    br
+    canvas#myCanvas(height='500',width="500")
+    script(src='/js/index.js')
